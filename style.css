@@ -1,5 +1,10 @@
-:root{
+:root {
     --dark-blue: #363f5f;
+    --green: #49aa26;
+    --light-green: #3bc509;
+    --red: #e92929;
+    --light-gray: #e0dede;
+    --lighter-green: #b0e0b0;
 }
 
 /* Global ===================================*/
@@ -13,7 +18,7 @@ html {
     font-size: 93.75%; /* 15px */
 }
 
-body{
+body {
     background: #f0f2f5;
     font-family: 'Poppins', sans-serif;
 }
@@ -36,7 +41,7 @@ body{
 }
 
 /* Titles ===================================*/
-h2{
+h2 {
     margin-top: 3.2rem; /*tamanho relativo ao tamanho da fonte do navegador(normalmente 16px)*/
     margin-bottom: 0.8rem;
     color: var(--dark-blue);
@@ -44,17 +49,48 @@ h2{
 
 /* Links & Buttons ===================================*/
 a {
-    color: #49aa26;
+    color: var(--green);
     text-decoration: none;
 }
 
 a:hover {
-    color: #3dd705;
+    color: var(--light-green);
+}
+
+button {
+    width: 100%;
+    height: 50px;
+    border: none;
+    color: white;
+    background: var(--green);
+    padding: 0;
+    border-radius: .15rem;
+    cursor: pointer;
+}
+
+button:hover {
+    background: var(--light-green);
 }
 
 .button.new {
     display: inline-block;
     margin-bottom: .8rem;
+}
+
+.button.cancel {
+    color: var(--red);
+    border: 2px var(--red) solid;
+    border-radius: .15rem;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: .8;
+}
+
+.button.cancel:hover {
+    background-color: var(--light-gray);
+    opacity: 1;
 }
 
 /* Header ===================================*/
@@ -102,7 +138,7 @@ header{
 }
 
 .card.total{
-    background: #49aa26;
+    background: var(--green);
     color: white;
 }
 
@@ -182,6 +218,43 @@ td.expense {
 .modal {
     background: #f0f2f5;
     padding: 2.4rem;
+    width: 90%;
+    max-width: 500px;
+}
+
+/* Form ===================================*/
+#form {
+    max-width: 500px;
+}
+
+#form h2 {
+    margin-top: 0;
+}
+
+input {
+    border: none;
+    border-radius: .2rem;
+    padding: .8rem;
+    width: 100%;
+}
+.input-group {
+    margin-top: .8rem;
+}
+
+.input-group small {
+    background-color: var(--lighter-green);
+    opacity: .4;
+}
+
+.input-group.actions {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.input-group.actions .button,
+.input-group.actions button {
+    width: 48%;
 }
 
 /* Footer ===================================*/
