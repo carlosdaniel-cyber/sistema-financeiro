@@ -11,39 +11,38 @@ function toggleClass () {
     document.querySelector('.modal-overlay').classList.toggle('active')
 }
 
-const transactions = [
-    {
-        id: 1,
-        description: 'Luz',
-        amount: -50000,
-        date: '23/01/2021'
-    },
-    {
-        id: 2,
-        description: 'Criação website',
-        amount: 500000,
-        date: '23/01/2021'
-    },
-    {
-        id: 3,
-        description: 'Internet',
-        amount: -20000,
-        date: '23/01/2021'
-    },
-    {
-        id: 4,
-        description: 'App',
-        amount: 42069,
-        date: '04/03/2021'
-    }
-]
-
 const Transaction = {
-    all: transactions,
+    all: [
+        {
+            description: 'Luz',
+            amount: -50000,
+            date: '23/01/2021'
+        },
+        {
+            description: 'Criação website',
+            amount: 500000,
+            date: '23/01/2021'
+        },
+        {
+            description: 'Internet',
+            amount: -20000,
+            date: '23/01/2021'
+        },
+        {
+            description: 'App',
+            amount: 42069,
+            date: '04/03/2021'
+        }
+    ],
 
     add(transaction) {
         Transaction.all.push(transaction)
 
+        App.reload()
+    },
+
+    remove(index) {
+        Transaction.all.splice(index, 1)
         App.reload()
     },
 
@@ -125,9 +124,49 @@ const Utils = {
     }
 }
 
+const Form = {
+    description: document.querySelector('input#description'),
+    amount: document.querySelector('input#amount'),
+    date: document.querySelector('input#date'),
+
+    getValues() {
+        return {
+            description: Form.description.value,
+            amount: Form.amount.value,
+            date: Form.date.value
+        }
+    },
+
+    validateFields() {
+        const { description, amount, date } = this.getValues()
+        
+        if(description.trim() === "" || amount.trim() === "" || date.trim() === "") {
+            throw new Error("Por favor, preencha todos os campos")
+        }
+    },
+
+    formatData() {
+        console.log('Formatar os dados')
+    },
+
+    submit(event) {
+        event.preventDefault()
+
+        try {
+            Form.validateFields()
+          
+        } catch (error) {
+            alert(error.message)
+        }
+
+
+        //Form.formatData()
+    }
+}
+
 const App = {
     init() {
-        transactions.forEach(transaction => {
+        Transaction.all.forEach(transaction => {
             DOM.addTransaction(transaction)
         })
 
@@ -141,10 +180,3 @@ const App = {
 }
 
 App.init()
-
-Transaction.add({
-    id: 5,
-    description: 'Mercado',
-    amount: 100000,
-    date: '05/03/2022'
-})
