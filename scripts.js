@@ -9,6 +9,7 @@
 
 function toggleModal() {
     document.querySelector('.modal-overlay').classList.toggle('active')
+    setCurrentDate()
 }
 
 const Storage = {
@@ -122,6 +123,11 @@ const Utils = {
 
         return signal + value
     }
+}
+
+function setCurrentDate() {
+    let currentDate = new Date().toJSON().slice(0,10)
+    document.querySelector('input#date').value = currentDate
 }
 
 const Form = {
