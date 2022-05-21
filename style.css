@@ -1,10 +1,12 @@
 :root {
+    --hue: 104;
     --dark-blue: #363f5f;
-    --green: #49aa26;
-    --light-green: #3bc509;
+    --primary-color: hsl(var(--hue), 63%, 41%);
+    --light-color: hsl(var(--hue), 91%, 40%);
     --red: #e92929;
     --light-gray: #e0dede;
-    --lighter-green: #b0e0b0;
+    --lighter-color: hsl(calc(var(--hue) + 16), 44%, 78%);
+    --header: hsl(var(--hue), 37%, 21%);
 }
 
 /* Global ===================================*/
@@ -49,12 +51,12 @@ h2 {
 
 /* Links & Buttons ===================================*/
 a {
-    color: var(--green);
+    color: var(--primary-color);
     text-decoration: none;
 }
 
 a:hover {
-    color: var(--light-green);
+    color: var(--light-color);
 }
 
 button {
@@ -62,14 +64,14 @@ button {
     height: 50px;
     border: none;
     color: white;
-    background: var(--green);
+    background: var(--primary-color);
     padding: 0;
     border-radius: .15rem;
     cursor: pointer;
 }
 
 button:hover {
-    background: var(--light-green);
+    background: var(--light-color);
 }
 
 .button.new {
@@ -95,9 +97,13 @@ button:hover {
 
 /* Header ===================================*/
 header{
-    background-color: #2d4a22;
+    background-color: var(--header);
     padding: 2rem 0 10rem;
     text-align: center;
+}
+
+header svg path[fill="#49AA26"] {
+    fill: hsl(var(--hue), 64%, 41%);
 }
 
 #logo{
@@ -138,7 +144,7 @@ header{
 }
 
 .card.total{
-    background: var(--green);
+    background: var(--primary-color);
     color: white;
 }
 
@@ -244,7 +250,7 @@ input {
 }
 
 .input-group small {
-    background-color: var(--lighter-green);
+    background-color: var(--lighter-color);
     opacity: .4;
 }
 
