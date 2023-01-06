@@ -9,7 +9,7 @@
 
 function toggleModal() {
     document.querySelector('.modal-overlay').classList.toggle('active')
-    setCurrentDate()
+    getCurrentDate()
 }
 
 const Storage = {
@@ -18,7 +18,7 @@ const Storage = {
     },
 
     set(transactions) {
-        localStorage.setItem("def.finances:transactions", JSON.stringify(transactions))
+        localStorage.setItem("dev.finances:transactions", JSON.stringify(transactions))
     }
 }
 
@@ -80,6 +80,7 @@ const DOM = {
             <td class="description">${transaction.description}</td>
             <td class="${CSSclass}">${amount}</td>
             <td class="date">${transaction.date}</td>
+            <td class="time">${transaction.time}</td>
             <td>
                 <img onclick="Transaction.remove(${index})" src="./assets/minus.svg" alt="Remover transações">
             </td>
@@ -125,21 +126,27 @@ const Utils = {
     }
 }
 
-function setCurrentDate() {
+function getCurrentDate() {
     let currentDate = new Date().toJSON().slice(0,10)
     document.querySelector('input#date').value = currentDate
+}
+
+function getCurrentTime() {
+    return new Date().toTimeString().slice(0, 5)
 }
 
 const Form = {
     description: document.querySelector('input#description'),
     amount: document.querySelector('input#amount'),
     date: document.querySelector('input#date'),
+    time: getCurrentTime(),
 
     getValues() {
         return {
             description: Form.description.value,
             amount: Form.amount.value,
-            date: Form.date.value
+            date: Form.date.value,
+            time: Form.time
         }
     },
 
@@ -152,7 +159,7 @@ const Form = {
     },
 
     formatValues() {
-        let { description, amount, date } = this.getValues()
+        let { description, amount, date, time } = this.getValues()
 
         amount = Utils.formatAmount(amount)
 
@@ -161,7 +168,8 @@ const Form = {
         return {
             description,
             amount,
-            date
+            date,
+            time
         }
     },
 
