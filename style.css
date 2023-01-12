@@ -7,6 +7,7 @@
     --light-gray: #e0dede;
     --lighter-color: hsl(calc(var(--hue) + 16), 44%, 78%);
     --header: hsl(var(--hue), 37%, 21%);
+    --sidebar-border: hsl(calc(var(--hue) + 130), 29%, 26%);
 }
 
 /* Global ===================================*/
@@ -23,6 +24,87 @@ html {
 body {
     background: #f0f2f5;
     font-family: 'Poppins', sans-serif;
+}
+
+/* Sidebar ===================================*/
+
+.border {
+    border: 1px solid red;
+}
+
+.sidebar {
+    position: fixed;
+    top: 0;
+    right: 0px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 240px;
+    height: 100%;
+    padding: 40px 10px 30px 10px;
+    border-left: 1px solid var(--sidebar-border);
+}
+
+.sidebar-header {
+    width: 100%;
+    margin-bottom: 16px;
+    padding: initial;
+}
+
+.sidebar > nav {
+    flex: 1 1 auto;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.sidebar button {
+    height: 60px;
+    background: transparent;
+    border: 0;
+    font-family: inherit;
+    color: white;
+    cursor: pointer;
+    text-align: left;
+    padding: 0;
+}
+
+.sidebar button > span {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    height: 48px;
+    padding: 0  16px 0 12px;
+    border-radius: 24px;
+    line-height: 1;
+}
+
+.sidebar button:hover > span {
+    background: rgba(255, 255, 255, .08);
+    transition: all .2;
+}
+
+.sidebar button i {
+    position: relative;
+    font-size: 28px;
+    transition: .2s;
+}
+
+.sidebar button span {
+    font-size: 16px;
+}
+
+.logo-img {
+    width: 35px;
+    min-height: 35px;
+    border-radius: 50%;
+    object-fit: cover;
+    transition: transform .4s;
+    margin-left: 10px;
+}
+
+.logo-img:hover {
+    transform: scale(1.5);
 }
 
 .sr-only { /* truques para fazer elementos sumirem da tela */
