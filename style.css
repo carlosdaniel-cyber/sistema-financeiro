@@ -43,6 +43,8 @@ body {
     height: 100%;
     padding: 40px 10px 30px 10px;
     border-left: 1px solid var(--sidebar-border);
+    background-color: black;
+    transition: all .4s;
 }
 
 .sidebar-header {
@@ -107,6 +109,22 @@ body {
     transform: scale(1.5);
 }
 
+/* Ajustando sidebar com apenas os ícones */
+@media (width < 920px) {
+    .sidebar {
+        width: 72px;
+
+    }
+    .sidebar button > span {
+        width: 50px;
+    }
+
+    .sidebar button > span > span {
+        opacity: 0;
+        visibility: hidden;
+    }
+}
+
 .sr-only { /* truques para fazer elementos sumirem da tela */
     position: absolute;
     width: 1px;
@@ -119,7 +137,7 @@ body {
     border-width: 0;
 }
 
-.container{
+.container {
     width: min(90vw, 800px);
     margin: auto;
 }
