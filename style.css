@@ -110,7 +110,7 @@ body {
 }
 
 /* Ajustando sidebar com apenas os ícones */
-@media (width < 920px) {
+@media (width < 1054px) {
     .sidebar {
         width: 72px;
 
@@ -383,5 +383,21 @@ footer{
         display: grid;
         grid-template-columns: repeat(3, 1fr);
         gap: 2rem;
+    }
+}
+
+@media (min-width: 1054px) {
+    html {
+        margin-right: 240px;
+    }
+}
+
+@media (max-width: 1054px) {
+    html {
+        margin-right: 72px;
+    }
+
+    .container {
+        width: 95%;
     }
 }
